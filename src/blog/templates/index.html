@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/html">
+<head>
+    <meta charset="UTF-8">
+    <title>Index html </title>
+    <h1>
+        {{ title }} Is Working !!!
+    </h1>
+</head>
+<body>
+{% for obj in object_list %}
+{% url "posts:post_detail"  id=obj.id %}
+<a href='{{ obj.get_absolute_url }}'>{{ obj.title }}</a></br>
+{{ obj.content }}<br/>
+{{ obj.timestamp }}<br/>
+{{ obj.updated }}<br/>
+{{ obj.id }}<br/>
+{% endfor %}
+</body>
+</html>

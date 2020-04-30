@@ -1,0 +1,74 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="upper_layer">
+<h1> Wildlife Engine Classification</h1>
+</div>
+<h5>
+    <p>
+        <strong>
+            - Suyash Singh ss756@snu.edu.in
+        </strong>
+    </p>
+</h5>
+<h6>
+    <br> My two cents on recent advancements in disruptive technologies
+</h6>
+<div class="container-fluid col-sm-offset-3">
+    <div class="row">
+        {% for obj in object_list %}
+        <!{% url "posts:post_detail"  slug=obj.slug %}>
+        <div class="col-sm-12 services-box hoverServices">
+            <div class="thumbnail">
+                <div class="caption">
+                    <h2 class="title">
+                        <a href='{{ obj.get_absolute_url }}'>{{ obj.title }}</a>
+                    </h2>
+                    <div class="row">
+                        <div class="col-sm-2">
+                            <small>
+                                    <p>
+                                <br>Posted {{ obj.timestamp|timesince }} ago
+                                {% if obj.updated > obj.timestamp %}
+                                <br>Updated: {{ obj.updated|timesince }} Ago
+                                {% endif %}
+                                    </p>
+                            </small>
+
+                        </div>
+                        <div class="col-sm-3">
+                                <p> {{ obj.content|linebreaks|truncatechars:180 }}</p>
+
+                        </div>
+                        <div class="col-sm">
+                            {% if obj.image %}
+                                <img src="{{ obj.image.url }}" style="width:600px;height:300px" class="img-responsive">
+                            {% endif %}
+                        </div>
+
+                    </div>
+                    <!  add a and p tags too  href="{{ obj.get_absolute_url }}" class="btn btn-primary" role="button"View  >
+                </div>
+            </div>
+        </div>
+    {% endfor %}
+    <div class="pagination">
+    <span class="step-links">
+        {% if object_list.has_previous %}
+            <a href="?page=1">&laquo; first</a>
+            <a href="?page={{ object_list.previous_page_number }}">previous</a>
+        {% endif %}
+
+        <span class="current">
+            Page {{ object_list.number }} of {{ object_list.paginator.num_pages }}.
+        </span>
+
+        {% if object_list.has_next %}
+            <a href="?page={{ object_list.next_page_number }}">next</a>
+            <a href="?page={{ object_list.paginator.num_pages }}">last &raquo;</a>
+        {% endif %}
+    </span>
+    </div>
+
+</div>
+
+{% endblock content %}
