@@ -8,9 +8,9 @@ from django.contrib.auth.models import User
 # MVC  Model View Controller
 def upload_location(instance,filename):
     return "{}/{}".format(instance.slug,filename)
-
+User= settings.AUTH_USER_MODEL
 class Post(models.Model):
-    # user=models.ForeignKey(User,blank=True, on_delete=models.CASCADE)
+    user=models.ForeignKey(User,default=1,null=True, on_delete=models.SET_NULL)
     title=models.CharField(max_length=120)
     slug=models.SlugField(unique=True)
     content=models.TextField()
