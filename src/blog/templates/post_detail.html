@@ -11,12 +11,20 @@
 <img src="{{ instance.image.url}}" style="width:640px;height:390px" class='img-responsive' />
 {% endif %}
 <div class="col-sm-offset-3">
-    <h1>{{ title }}<h6>{{ instance.timestamp }}</h6></h1>
+    <br>
     <div class="social-buttons">
+        <h1>
+            {{ title }}
+        </h1>
+
+         {% if instance.draft %}<span style="color:red;">  Draft  </span>{% endif %}<span style="color:olivedrab;">Published {{ instance.publish|timesince }} Ago</span>
             <a href="https://www.linkedin.com/shareArticle?mini=true&url={{ request.build_absolute_uri }}&title={{ instance.title }}&summary={{ instance.content|urlify }}&source={{ request.build_absolute_uri }}/">
                 <i class="fab fa-linkedin"></i>
             </a>
+
     </div>
+
+
     <br>
             {{ instance.content|linebreaks|safe }}
     </br>

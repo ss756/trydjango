@@ -7,7 +7,7 @@ from .forms import PostForm
 from django.core.paginator import Paginator, EmptyPage,PageNotAnInteger
 from django.shortcuts import render
 from urllib.parse import quote_plus
-
+from django.utils import timezone
 
 
 
@@ -34,6 +34,9 @@ def post_create(request, *args, **kwargs):
 def post_detail(request, slug, *args, **kwargs):
     # return HttpResponse('<h1> Post Details are below  </h1')
     instance = get_object_or_404(Post, slug=slug)
+    if instance.draft :
+        if not request.user.is_staff or not request.user.is_superuser:
+            raise Http404
     share_string=quote_plus(instance.content)
     boo = request.user.is_authenticated
     context = {
@@ -55,8 +58,11 @@ def post_list(request, *args, **kwargs):
     #     context={
     #         "title": "My Post List is working"
     #     }
-    queryset_list: object = Post.objects.all().order_by('-timestamp')
-
+    queryset_list: object = Post.objects.active().order_by('-timestamp')
+    if request.user.is_staff or request.user.is_superuser:
+        queryset_list: object= Post.objects.all().order_by('timestamp')
+    #queryset_list: object = Post.objects.filter(draft=False).filter(publish__lte=timezone.now())
+    #queryset_list: object = Post.objects.filter(draft=False)
     paginator = Paginator(queryset_list, 2)  # show 9 contacts per page
     page_request_var="page"
     page = request.GET.get(page_request_var)

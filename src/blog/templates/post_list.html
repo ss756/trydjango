@@ -1,7 +1,7 @@
 {% extends "base.html" %}
 {% block content %}
 <div class="upper_layer">
-<h1> Wildlife Engine Classification</h1>
+<h1> Blog Articles</h1>
 </div>
 <h5>
     <p>
@@ -29,7 +29,9 @@
                                     <p>
                                 <br>Posted {{ obj.timestamp|timesince }} ago
                                 {% if obj.updated > obj.timestamp %}
-                                <br>Updated: {{ obj.updated|timesince }} Ago
+                                        <small>
+                                            <br>Updated:{{ obj.updated|timesince }} ago
+                                        </small>
                                 {% endif %}
                                     </p>
                             </small>

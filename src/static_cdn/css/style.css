@@ -36,3 +36,7 @@
   -webkit-text-fill-color: transparent;
   transform: scale(2.2);
 }
+
+div.social-buttons{
+font-size: large;
+}
