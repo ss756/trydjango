@@ -9,7 +9,7 @@ class PostModelAdmin(admin.ModelAdmin):
     list_filter = ["updated","timestamp"]
     list_editable = ["title"]
     class Meta:
-        model= Post
+        model = Post
 
-admin.site.register(Post, PostModelAdmin)
+admin.site.register(Post,PostModelAdmin)
 

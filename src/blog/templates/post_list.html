@@ -20,9 +20,20 @@
         <div class="col-sm-12 services-box hoverServices">
             <div class="thumbnail">
                 <div class="caption">
-                    <h2 class="title">
-                        <a href='{{ obj.get_absolute_url }}'>{{ obj.title }}</a>
+                    {% if obj.draft %}
+                    <style>
+                        h2.draft_title{
+                        color: red;
+                     }
+                    </style>
+                    <h2 class="title" >
+                            <a class="draft" href='{{ obj.get_absolute_url }}' style="color:red">{{ obj.title }}</a>
                     </h2>
+                    {% else %}
+                    <h2 class="title">
+                        <a href='{{ obj.get_absolute_url }}' >{{ obj.title }}</a>
+                    </h2>
+                    {% endif %}
                     <div class="row">
                         <div class="col-sm-2">
                             <small>
