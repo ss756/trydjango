@@ -20,8 +20,8 @@ from django.urls import path,include
 from posts import views
 urlpatterns = [
     path("admin/", admin.site.urls),
-    path('posts/',include(('posts.urls','posts'), namespace='posts')),
-    path('',views.grand_page)
+    path('',include(('posts.urls','posts'), namespace='posts')),
+    #path('',views.grand_page)
     # path("list/",views.post_list),
     # path('',views.landing_page),
     # path('create/',views.post_create),

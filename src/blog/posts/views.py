@@ -7,7 +7,9 @@ from .forms import PostForm
 from django.core.paginator import Paginator, EmptyPage,PageNotAnInteger
 from django.shortcuts import render
 from urllib.parse import quote_plus
+from django.views.generic import TemplateView,ListView
 from django.utils import timezone
+from django.db.models import Q
 
 
 
@@ -92,7 +94,7 @@ def post_update(request, slug=None):
         instance= form.save(commit=False)
         instance.save()
         # message success
-        messages.success(request,"<A href='/posts/list/'>Item</A>Saved", extra_tags="html_update")
+        messages.success(request,"<A href='/list/'>Item</A>Saved", extra_tags="html_update")
         return HttpResponseRedirect(instance.get_absolute_url())
 
     context = {
@@ -113,14 +115,29 @@ def post_delete(request,slug=None):
     return redirect("posts:list")
 
 
+#
+#
+# def landing_page(request, *args, **kwargs):
+#     print(request.user.is_authenticated)
+#     return HttpResponse("<h1> Landing Page ..... Under Construction ")
+#
+#
+class HomePageView(TemplateView):
+    template_name = 'home.html'
 
 
-def landing_page(request, *args, **kwargs):
-    print(request.user.is_authenticated)
-    return HttpResponse("<h1> Landing Page ..... Under Construction ")
+class SearchPageView(ListView):
+    model = Post
+    template_name = 'search_results.html'
+    def get_queryset(self): # new
+        query = self.request.GET.get('q')
+        p: object = Post.objects.active().order_by('-timestamp')
+        if self.request.user.is_staff or self.request.user.is_superuser:
+            p: object = Post.objects.all().order_by('timestamp')
+        object_list = p.filter(
+            Q(title__icontains=query) | Q(content__icontains=query)
+        )
+        return object_list
 
-
-def grand_page(request, *args, **kwargs):
-    return HttpResponse("<h1> Super Hero Landing </h1>  ")
 
 

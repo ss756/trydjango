@@ -1,17 +1,22 @@
 {% extends "base.html" %}
 {% block content %}
 <div class="upper_layer">
-<h1> Blog Articles</h1>
+  <h1>
+    Blog Articles
+  </h1>
 </div>
-
 <div class="container-fluid col-sm-offset-3">
     <div class="row">
-        {% for obj in object_list %}
-        <!{% url "posts:post_detail"  slug=obj.slug %}>
-        <div class="col-sm-12 services-box hoverServices">
+      {% for obj in object_list %}
+      <div class="col-sm-12 services-box hoverServices">
             <div class="thumbnail">
                 <div class="caption">
                     {% if obj.draft %}
+                    <style>
+                        h2.draft_title{
+                        color: red;
+                     }
+                    </style>
                     <h2 class="title" >
                             <a class="draft" href='{{ obj.get_absolute_url }}' style="color:red">{{ obj.title }}</a>
                     </h2>
@@ -34,12 +39,8 @@
                             </small>
 
                         </div>
-                        <div class="col-sm-3">
-                            <p>
-                               <div class="content-markdown">{{ obj.content|safe|truncatechars:45 }}</div>
-                            </p>
-
-
+                        <div class="content-markdown">
+                                <p> {{ obj.content|safe|truncatechars:45 }}</p>
 
                         </div>
                         <div class="col-sm">
@@ -53,7 +54,6 @@
                 </div>
             </div>
         </div>
-    </div>
     {% endfor %}
     <div class="pagination">
     <span class="step-links">

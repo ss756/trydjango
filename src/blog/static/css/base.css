@@ -1,6 +1,6 @@
 body {
-  background-color: snow;
-  color: black;
+  background-color: #FDFDFD;
+  color: #010101;
   padding: 0;
   margin: 0;
   display: flex;
@@ -10,6 +10,10 @@ body {
 [class^="col"]{
     font-family: "Lucida Console", Courier, monospace;;
 }
+.content-markdown{
+  font-family: "Lucida Console", Courier, monospace;;
+}
+
 .container-fluid{
   position: relative;
   width: 150%;
@@ -23,12 +27,7 @@ h2{
     font-weight: 800px;
 }
 
-.upper_layer{
-  height:80px;
-  width:150%;
-  background-color: #ffffcc;
-  align-items: center;
-}
+
 
 
 h1{
