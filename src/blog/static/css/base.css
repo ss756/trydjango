@@ -16,11 +16,11 @@ body {
 
 .container-fluid{
   position: relative;
-  width: 150%;
+  width: 120%;
   display: grid;
-  grid-template-columns: repeat(auto-fill);
   grid-template-rows: auto;
-  grid-gap: 0 40px;
+  grid-gap:50px;
+  padding: 9px;
 }
 h2{
     font-size: 30px;
@@ -41,10 +41,9 @@ h1{
 .hoverServices:hover {
   background-color: lightblue;
 }
-@media (min-width:978px) {
+@media (min-height:1080px) {
   .services-box {
-    height: 360px;
-    border:0.4px solid #aaaaaa;
+    border: 5px solid #aaaaaa;
     border-left: 0;
     border-right: 0;
   }

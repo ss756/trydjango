@@ -3,7 +3,7 @@
 <div class="upper_layer">
 <h1> Blog Articles</h1>
 </div>
-
+<! col-sm-offset-3 >
 <div class="container-fluid col-sm-offset-3">
     <div class="row">
         {% for obj in object_list %}
@@ -35,16 +35,16 @@
 
                         </div>
                         <div class="col-sm-3">
-                            <p>
-                               <div class="content-markdown">{{ obj.content|safe|truncatechars:45 }}</div>
-                            </p>
+                            <small>
+                               <div class="content-markdown">{{ obj.content|safe|truncatechars:490 }}</div>
+                            </small>
 
 
 
                         </div>
                         <div class="col-sm">
                             {% if obj.image %}
-                                <img src="{{ obj.image.url }}" style="width:600px;height:300px" class="img-responsive">
+                                <img src="{{ obj.image.url }}" style="width:450px;height:250px" class="img-responsive">
                             {% endif %}
                         </div>
 
@@ -52,8 +52,9 @@
                     <!  add a and p tags too  href="{{ obj.get_absolute_url }}" class="btn btn-primary" role="button"View  >
                 </div>
             </div>
+
         </div>
-    </div>
+
     {% endfor %}
     <div class="pagination">
     <span class="step-links">
@@ -61,7 +62,6 @@
             <a href="?page=1">&laquo; first</a>
             <a href="?page={{ object_list.previous_page_number }}">previous</a>
         {% endif %}
-
         <span class="current">
             Page {{ object_list.number }} of {{ object_list.paginator.num_pages }}.
         </span>
@@ -71,6 +71,7 @@
             <a href="?page={{ object_list.paginator.num_pages }}">last &raquo;</a>
         {% endif %}
     </span>
+    </div>
     </div>
 
 </div>

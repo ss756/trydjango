@@ -7,16 +7,12 @@
 </div>
 <div class="container-fluid col-sm-offset-3">
     <div class="row">
-      {% for obj in object_list %}
-      <div class="col-sm-12 services-box hoverServices">
+        {% for obj in object_list %}
+        <!{% url "posts:post_detail"  slug=obj.slug %}>
+        <div class="col-sm-12 services-box hoverServices">
             <div class="thumbnail">
                 <div class="caption">
                     {% if obj.draft %}
-                    <style>
-                        h2.draft_title{
-                        color: red;
-                     }
-                    </style>
                     <h2 class="title" >
                             <a class="draft" href='{{ obj.get_absolute_url }}' style="color:red">{{ obj.title }}</a>
                     </h2>
@@ -39,13 +35,17 @@
                             </small>
 
                         </div>
-                        <div class="content-markdown">
-                                <p> {{ obj.content|safe|truncatechars:45 }}</p>
+                        <div class="col-sm-3">
+                            <small>
+                               <div class="content-markdown">{{ obj.content|safe|truncatechars:630 }}</div>
+                            </small>
+
+
 
                         </div>
                         <div class="col-sm">
                             {% if obj.image %}
-                                <img src="{{ obj.image.url }}" style="width:600px;height:300px" class="img-responsive">
+                                <img src="{{ obj.image.url }}" style="width:450px;height:250px" class="img-responsive">
                             {% endif %}
                         </div>
 
@@ -53,7 +53,9 @@
                     <!  add a and p tags too  href="{{ obj.get_absolute_url }}" class="btn btn-primary" role="button"View  >
                 </div>
             </div>
+
         </div>
+
     {% endfor %}
     <div class="pagination">
     <span class="step-links">
@@ -61,7 +63,6 @@
             <a href="?page=1">&laquo; first</a>
             <a href="?page={{ object_list.previous_page_number }}">previous</a>
         {% endif %}
-
         <span class="current">
             Page {{ object_list.number }} of {{ object_list.paginator.num_pages }}.
         </span>
@@ -71,6 +72,7 @@
             <a href="?page={{ object_list.paginator.num_pages }}">last &raquo;</a>
         {% endif %}
     </span>
+    </div>
     </div>
 
 </div>

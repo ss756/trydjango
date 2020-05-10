@@ -65,7 +65,7 @@ def post_list(request, *args, **kwargs):
         queryset_list: object= Post.objects.all().order_by('timestamp')
     #queryset_list: object = Post.objects.filter(draft=False).filter(publish__lte=timezone.now())
     #queryset_list: object = Post.objects.filter(draft=False)
-    paginator = Paginator(queryset_list, 2)  # show 9 contacts per page
+    paginator = Paginator(queryset_list, 3)  # show 9 contacts per page
     page_request_var="page"
     page = request.GET.get(page_request_var)
 
