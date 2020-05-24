@@ -43,7 +43,7 @@ h1{
 }
 @media (min-height:1080px) {
   .services-box {
-    border: 5px solid #aaaaaa;
+    border: 0.4 px solid #aaaaaa;
     border-left: 0;
     border-right: 0;
   }

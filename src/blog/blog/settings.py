@@ -27,6 +27,8 @@ DEBUG = True
 
 ALLOWED_HOSTS = []
 
+# third party app initialisation
+SUMMERNOTE_THEME = 'bs4'  # Show summer note with Bootstrap4
 
 # Application definition
 
@@ -37,7 +39,10 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'pagedown',
+    # third part app "pagedown"
+    'pagedown.apps.PagedownConfig',
+    # third party app "django_summer note"
+    "django_summernote",
     'posts'
 ]
 
