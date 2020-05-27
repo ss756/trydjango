@@ -1,16 +1,18 @@
-{% load static %}
+
 <head>
+    {% load static %}
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
-    <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css">
 
     <title>Full Power</title>
+    <script src="{% static 'js/sidebar.js' %}"></script>
     <link rel="stylesheet" href='{% static "/css/form.css" %}'/>
+    <link rel="stylesheet" href='{% static "/css/sidebar.css" %}'/>
 </head>
 <body>
     <div class="search">
@@ -22,18 +24,117 @@
                 <i class="fa fa-search"></i>
                 </form>
         </object>
-
     </div>
     </div>
+    <div class="sidebar-block mt-100">
+      <div class="navbar-toggle-visible left">
+        <!--side menu open button-->
+        <div id="menu_bars" class="left active"> <span></span> <span></span> <span></span> </div>
+        <div class="web-sidebar">
 
-    <div class= "wrapper">
-        <nav id ="sidebar">
-            <div class="sidebar-header">
-                <h3> TOGGLE </h3>
-            </div>
+          <div class="sidebar-items">
+            <nav class="side-nav side-nav-left slide-nav static-nav side-nav-open">
+              <div class="side-nav-inner-setting">
+                <ul class="list-unstyled side-nav-list">
 
-        </nav>
+                  <li class="sidebar-item clearfix">
 
+                    <a href="/" class="gray active">
+                      Home
+                    </a>
+
+                  </li>
+                  <li class="sidebar-item clearfix">
+
+                    <a href="/invoices" class="gray ">
+                      Skill Set
+                    </a>
+
+                  </li>
+                  <li class="sidebar-item clearfix">
+
+                    <a href="/shipments" class="gray ">
+                      Journey
+                    </a>
+
+                  </li>
+                  <li class="sidebar-item clearfix">
+
+                    <a href="/list" class="gray ">
+                      Blog
+                    </a>
+
+                  </li>
+                  <li class="sidebar-item clearfix">
+
+                    <a href="/addresses" class="gray ">
+                        About Me
+                    </a>
+
+                  </li>
+                  <li class="sidebar-item clearfix">
+
+                    <a href="/quotations" class="gray ">
+                        Testimonials
+                    </a>
+
+                  </li>
+                  <li class="sidebar-item clearfix">
+
+                    <a href="/quotations" class="gray ">
+                        Playlist
+                    </a>
+
+                  </li>
+
+                </ul>
+              </div>
+            </nav>
+          </div>
+
+        </div>
+
+      </div>
     </div>
+
+    <script src="http://code.jquery.com/jquery-3.5.1.min.js" integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/marked/1.0.0/marked.min.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+          $(".sidebar-item a").each(function (index) {
+            if (this.href.trim() == window.location) $(this).addClass("active");
+          });
+          /* ===================================
+                    SideBar Menu On click
+                    ====================================== */
+          var $menu_left = $(".side-nav-left");
+          var $toggler = $("#menu_bars");
+          if ($("#menu_bars").length) {
+            $("#side-nav").addClass("side-nav-push");
+
+            if ($toggler.hasClass("left")) {
+              $toggler.on("click", function (e) {
+                $(this).toggleClass("active");
+
+                $menu_left.toggleClass("side-nav-open");
+                e.stopPropagation();
+              });
+            } else {
+              if ($toggler.hasClass("full")) {
+                $toggler.on("click", function (e) {
+                  $(this).toggleClass("active");
+                  $menu_full.toggleClass("side-nav-open");
+                  e.stopPropagation();
+                });
+              }
+            }
+          }
+        });
+    </script>
+
+
+
+
 </body>
 

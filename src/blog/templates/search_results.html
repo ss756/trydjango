@@ -2,8 +2,19 @@
 {% block content %}
 <div class="upper_layer">
   <h1>
-    Blog Articles
+    My Blog
   </h1>
+    <div class="search">
+    <div class="search1">
+        <object align="right">
+                <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
+                <form action="{% url 'posts:search_results' %}" method="get">
+                <input name="q" type="search" placeholder="Search Blog ..." autocomplete="off">
+                <i class="fa fa-search"></i>
+                </form>
+        </object>
+    </div>
+    </div>
 </div>
 <div class="container-fluid col-sm-offset-3">
     <div class="row">
