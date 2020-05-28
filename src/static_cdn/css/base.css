@@ -1,4 +1,4 @@
-body {
+.body{
   background-color: #FDFDFD;
   color: #010101;
   padding: 0;
@@ -59,9 +59,3 @@ h5{
 h6{
   color: olivedrab;
 }
-
-
-
-
-
-
