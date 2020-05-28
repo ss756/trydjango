@@ -52,9 +52,8 @@ body {
 	position: fixed;
 	left: 50vw;
 	width: 2px;
-	height: 90px;
-	top: 360px;
 	background-color: #333333;
+	height: 50px;
 }
 
 .text-wrap {
@@ -72,11 +71,26 @@ body {
 
 span {
 		color: #333333;
-		font-size:100px;
-		font-weight: 200;
 		padding: 0 ;
-	}
 
+	}
+@media screen and (min-width: 451px) {
+	div.line{
+	top: 360px;
+	}
+  	span {
+    font-size: 100px;
+  }
+}
+
+@media screen and (max-width: 450px) {
+	div.line{
+		top: 200px;
+	}
+  	span {
+    font-size: 30px;
+  }
+}
 
 .main-btn_wrapper {
 	position: absolute;
