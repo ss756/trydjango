@@ -10,9 +10,9 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css">
 
     <title>Full Power</title>
-    <script src="{% static 'js/sidebar.js' %}"></script>
     <link rel="stylesheet" href='{% static "/css/form.css" %}'/>
     <link rel="stylesheet" href='{% static "/css/sidebar.css" %}'/>
+    <link rel="stylesheet" href='{% static "/css/wave.css" %}' />
 </head>
 <body>
     <div class="wrapper">
@@ -22,18 +22,92 @@
             <div class="wave-three"></div>
 
         </div>
-        <div class="line" style="transform-origin: center center 0px; transform: matrix(1, 0, 0, 1, 0, 0);"></div>
-        <div class="text-wrap">
-            <span>F</span>
-            <span>U</span>
-            <span>L</span>
-            <span>L</span>
-            <span>P</span>
-            <span>O</span>
-            <span>W</span>
-            <span>E</span>
-            <span>R</span>
+        <div class="line" style="transform: matrix(1, 0, 0, 1, 0, 0); transform-origin: center center 0px; opacity: 1; display: block;"></div>
+        <div class="text-wrap" style="opacity:1; display: flex; transform: matrix(1,0,0,1,0,0);">
+            <div class="text" style ="position: relative; transform: matrix(1,0,0,1,0,0);">
+                <span>F</span>
+                <span>U</span>
+                <span>L</span>
+                <span>L</span>
+                <span>P</span>
+                <span>O</span>
+                <span>W</span>
+                <span>E</span>
+                <span>R</span>
+                <span>&#9882;</span>
+            <div class="main-btn_wrapper" style="position: absolute; display: none; opacity: 0; transform: matrix(0, 0, 0, 0, 0, 0);">
+                <i class="main-btn fa fa-play" aria-hidden="true">:: </i>
+            </div>
+            </div>
         </div>
+        <div class="header">
+            <div class="back_btn" style="transform:matrix(1, 0, 0, 1, 15, 0); opacity:0; display: none;">
+                <div class="circle"></div>
+                <div class="text">Back</div>
+            </div>
+        </div>
+        <div class="page" id="curator" style="display: none;">
+            <div class="curator_title_wrapper" style="opacity: 0; transform: matrix(1, 0, 0, 1, 30, 0);"><span>LP</span>
+                <div class="curator_line"></div>
+                <div class="curator_title">Listeners</div>
+                <div class="curator_line"></div><span>14</span>
+            </div>
+            <div class="curator_list" style="display: none; opacity: 0; transform: matrix(1, 0, 0, 1, 30, 0);">
+                <div class="curator_list_content">
+                    <div class="connect_btn_wrapper item">
+                        <div class="connect_btn">
+                            <div class="connect_btn_text">Connect <br>SoundCloud</div>
+                        </div>
+                    </div>
+                    <div class="curator_list_content_desc">Or Select <br>a Listener of <br>L.P. </div>
+                    <div class="item">
+                        <div class="thumb"></div>
+                        <div class="info">
+                            <div class="name">Fantasy</div>
+                            <div class="desc">Sam</div>
+                        </div>
+                    </div>
+                    <div class="item">
+                        <div class="thumb"></div>
+                        <div class="info">
+                            <div class="name">Fantasy</div>
+                            <div class="desc">Sam</div>
+                        </div>
+                    </div>
+                    <div class="item">
+                        <div class="thumb"></div>
+                        <div class="info">
+                            <div class="name">Fantasy</div>
+                            <div class="desc">Sam</div>
+                        </div>
+                    </div>
+                    <div class="item">
+                        <div class="thumb"></div>
+                        <div class="info">
+                            <div class="name">Fantasy</div>
+                            <div class="desc">Sam</div>
+                        </div>
+                    </div>
+                    <div class="item">
+                        <div class="thumb"></div>
+                        <div class="info">
+                            <div class="name">Fantasy</div>
+                            <div class="desc">Sam</div>
+                        </div>
+                    </div>
+                    <div class="item">
+                        <div class="thumb"></div>
+                        <div class="info">
+                            <div class="name">Fantasy</div>
+                            <div class="desc">Sam</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
 
     </div>
 
@@ -131,8 +205,8 @@
             if (this.href.trim() == window.location) $(this).addClass("active");
           });
           /* ===================================
-                    SideBar Menu On click
-                    ====================================== */
+          SideBar Menu On click
+          ====================================== */
           var $menu_left = $(".side-nav-left");
           var $toggler = $("#menu_bars");
           if ($("#menu_bars").length) {
@@ -157,9 +231,19 @@
           }
         });
     </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/1.19.0/TweenMax.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/1.19.0/TimelineMax.min.js"></script>
+    <script id="INLINE_PEN_JS_ID">
+        $('.text-wrap .text').hover(function () {
+      TweenMax.to($('.main-btn_wrapper'), 0.5, { opacity: 1, display: 'block', position: 'absolute', scale: 1, ease: Elastic.easeOut.config(1, 0.75) }),
+      TweenMax.to($('.line'), 0.5, { css: { scaleY: 0.6, transformOrigin: "center center" }, ease: Expo.easeOut });},
 
-
-
-
+    function () {
+      TweenMax.to($('.main-btn_wrapper'), 0.5, { opacity: 0, display: 'none', scale: 0, ease: Elastic.easeOut.config(1, 0.75) }),
+      TweenMax.to($('.line'), 0.5, { css: { scaleY: 1, transformOrigin: "center center" }, ease: Expo.easeOut });
+    });
+    //# sourceURL=pen.js
+  </script>
 </body>
 
