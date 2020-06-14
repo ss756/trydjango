@@ -50,7 +50,7 @@ li.sidebar-item a.active{
             margin: 0 auto;
         }
         .navbar-toggle-visible #menu_bars span{
-            background: greenyellow;
+            background: #a41515;
         }
         #menu_bars span:nth-child(1),
         #menu_bars span:nth-child(3) {
