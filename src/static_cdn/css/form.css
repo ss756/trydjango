@@ -5,9 +5,9 @@ body {
 	font-size: 1rem;
 	overflow: hidden;
 	width: 100vw;
-background: -webkit-linear-gradient(to right, #614385, #516395);  /* Chrome 10-25, Safari 5.1-6 */
-background: linear-gradient(to right, #614385, #516395); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-padding-top: 66px;
+    background: -webkit-linear-gradient(to right, #B0E0E6 0%, #D7FFFE 100% );  /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to right, #B0E0E6 0%, #D7FFFE 100%);  /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    padding-top: 79px;
 }
 
 
@@ -71,7 +71,6 @@ form:hover .fa{
     background: #07051a;
     color: white;
 }
-
 
 
 
